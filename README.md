@@ -1,70 +1,16 @@
-# tinypng2cos README
+## 介绍
 
-This is the README for your extension "tinypng2cos". After writing up a brief description, we recommend including the following sections.
 
-## Features
+tinypng2cos是一款基于TinyPNG的图片自动压缩上传COS的插件，打通开发者手动压缩图片，下载图片，上传COS，复制链接的繁琐流程，致力于提高研发的效率。
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+## 功能
+与TinyPNG相同，仅支持WebP、PNG和JPEG类型图片自动压缩上传，其他图片类型将直接上传。
 
-For example if there is an image subfolder under your extension project workspace:
+## 快速上手
+- 文件 > 首选项 > 设置 > 扩展 > 上传图片中设置存储图片的COS桶和域，以及云账号 SecretId，SecretKey 。
+![](https://compressed-upload-1301608163.cos.ap-guangzhou.myqcloud.com/10-27-1635301481530.png "demo")
 
-\!\[feature X\]\(images/feature-x.png\)
+- 光标点击需要图片地址的位置，或选中需要替换的代码，点击右键选择上传图片选项，选择要上传的图片，等待几秒即可获取图片自动压缩后上传到COS的HTTP地址。
+![](https://compressed-upload-1301608163.cos.ap-guangzhou.myqcloud.com/10-27-1635311823489.gif "demo")
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+原仓库: <a href="https://github.com/xxicao/Compressed-Upload">Compressed-Upload</a>, 增加阿里云oss支持,自定义文件夹和其他字段等若干功能

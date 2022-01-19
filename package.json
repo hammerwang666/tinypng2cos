@@ -1,8 +1,14 @@
 {
-  "name": "tinypng2cos",
+	"name": "tinypng2cos",
 	"displayName": "tinypng2cos",
-	"description": "",
-	"version": "0.0.1",
+	"version": "0.0.3",
+	"publisher": "zhenfan0753",
+	"description": "A plugin for automatically compressing and uploading images based on TinyPNG to COS.",
+	"icon": "images/icon.png",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/zhenfan0753/tinypng2cos"
+	},
 	"engines": {
 		"vscode": "^1.63.0"
 	},
@@ -10,14 +16,115 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:tinypng2cos.helloWorld"
+		"onCommand:extension.tinypng2cos",
+		"onCommand:extension.tinypng2oss"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "tinypng2cos.helloWorld",
-				"title": "Hello World"
+				"command": "extension.tinypng2cos",
+				"title": "上传图片到Cos"
+			},
+			{
+				"command": "extension.tinypng2oss",
+				"title": "上传图片到Oss"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"when": "editorFocus",
+					"command": "extension.tinypng2cos",
+					"group": "navigation"
+				},
+				{
+					"when": "editorFocus",
+					"command": "extension.tinypng2oss",
+					"group": "navigation"
+				}
+			]
+		},
+		"configuration": [
+			{
+				"title": "tinypng2cos",
+				"properties": {
+					"upload_image.tinifyKey": {
+						"type": "string",
+						"default": "",
+						"description": "设置Tinypng上传Api Key"
+					},
+					"upload_image.secretId": {
+						"type": "string",
+						"default": "",
+						"description": "设置cos上传SecretId"
+					},
+					"upload_image.secretKey": {
+						"type": "string",
+						"default": "",
+						"description": "设置cos上传SecretKey"
+					},
+					"upload_image.bucket": {
+						"type": "string",
+						"default": "",
+						"description": "设置cos上传Bucket"
+					},
+					"upload_image.region": {
+						"type": "string",
+						"default": "",
+						"description": "设置cos上传Region"
+					},
+					"upload_image.folder": {
+						"type": "string",
+						"default": "compressed-image",
+						"description": "设置cos上传文件夹"
+					},
+					"upload_image.cdnHost": {
+						"type": "string",
+						"default": "",
+						"description": "设置cos的cdn域名"
+					}
+				}
+			},
+			{
+				"title": "tinypng2oss",
+				"properties": {
+					"upload_image.tinifyKeyOss": {
+						"type": "string",
+						"default": "",
+						"description": "设置Tinypng上传Api Key"
+					},
+					"upload_image.accessKeyId": {
+						"type": "string",
+						"default": "",
+						"description": "设置oos上传accessKeyId"
+					},
+					"upload_image.accessKeySecret": {
+						"type": "string",
+						"default": "",
+						"description": "设置oos上传accessKeySecret"
+					},
+					"upload_image.bucketOss": {
+						"type": "string",
+						"default": "",
+						"description": "设置oss上传Bucket"
+					},
+					"upload_image.regionOss": {
+						"type": "string",
+						"default": "",
+						"description": "设置oos上传Region"
+					},
+					"upload_image.folderOss": {
+						"type": "string",
+						"default": "compressed-image",
+						"description": "设置cos上传文件夹"
+					},
+					"upload_image.cdnHostOss": {
+						"type": "string",
+						"default": "",
+						"description": "设置cos的cdn域名"
+					}
+				}
 			}
 		]
 	},
@@ -33,19 +140,26 @@
 		"test": "node ./out/test/runTest.js"
 	},
 	"devDependencies": {
-		"@types/vscode": "^1.63.0",
+		"@types/ali-oss": "^6.16.2",
 		"@types/glob": "^7.2.0",
 		"@types/mocha": "^9.0.0",
 		"@types/node": "14.x",
+		"@types/vscode": "^1.63.0",
 		"@typescript-eslint/eslint-plugin": "^5.9.1",
 		"@typescript-eslint/parser": "^5.9.1",
+		"@vscode/test-electron": "^2.0.3",
 		"eslint": "^8.6.0",
 		"glob": "^7.2.0",
 		"mocha": "^9.1.3",
-		"typescript": "^4.5.4",
 		"ts-loader": "^9.2.6",
+		"typescript": "^4.5.4",
 		"webpack": "^5.66.0",
-		"webpack-cli": "^4.9.1",
-		"@vscode/test-electron": "^2.0.3"
+		"webpack-cli": "^4.9.1"
+	},
+	"dependencies": {
+		"cos-nodejs-sdk-v5": "^2.10.6",
+		"ali-oss": "6.1.1",
+		"prettier": "^2.5.1",
+		"tinify": "^1.6.1"
 	}
 }
